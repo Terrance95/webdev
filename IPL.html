@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matches-1-BookButton</title>
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🏏 IPL Match Schedule</h1>
+        <p>Find your match and book your tickets</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Ticket Booking Information</h2>
+            <ul>
+                <li>Select your favourite team.</li>
+                <li>Check the match date, time and venue.</li>
+                <li>Compare the available ticket prices.</li>
+                <li>Click Book to view your selected match.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Find a Match</h2>
+            <!-- Prevent default form submission to stop page reload -->
+            <form class="filter-form-class" onsubmit="event.preventDefault();">
+                <label for="teamFilter">Filter by Name</label>
+                <select id="teamFilter" name="team">
+                    <option value="">All Teams</option>
+                    <option value="CSK">Chennai Super Kings</option>
+                    <option value="MI">Mumbai Indians</option>
+                    <option value="RCB">Royal Challengers Bangalore</option>
+                    <option value="KKR">Kolkata Knight Riders</option>
+                </select>
+                <button type="submit" class="reset-btn-class">Apply Filter</button>
+                <button type="reset" class="reset-btn-class">Show all</button>
+            </form>
+
+            <div class="table-wrapper">
+                <table>
+                    <caption>Upcoming Sample Matches</caption>
+                    <thead>
+                        <tr>
+                            <th>Match No</th>
+                            <th>Teams</th>
+                            <th>Date & Time</th>
+                            <th>Venue</th>
+                            <th>Ticket Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>CSK-MI</td>
+                            <td>29-Jan-27 6:30PM</td>
+                            <td>Chennai</td>
+                            <td>1200-12000/-</td>
+                            <td>
+                                <button type="button" 
+                                    class="book-btn"
+                                    data-teams="CSK-MI"
+                                    data-date="29-Jan-27 6:30PM"
+                                    data-venue="Chennai">Book</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>RR-RCB</td>
+                            <td>29-Jan-27 6:30PM</td>
+                            <td>Mohali</td>
+                            <td>1200-12000/-</td>
+                            <td>
+                                <button type="button" 
+                                    class="book-btn"
+                                    data-teams="RR-RCB"
+                                    data-date="29-Jan-27 6:30PM"
+                                    data-venue="Mohali">Book</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

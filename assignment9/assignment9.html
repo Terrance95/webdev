@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #09108b; 
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-bottom: 42px;
+        }
+
+        header h1 {
+            margin-top: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: rgb(131, 236, 255);
+            padding: 30px;
+            margin-bottom: 42px;
+            border-radius: 30px;
+        }
+
+        .filter-form-class {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select, button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        select {
+            border: 1px solid #09108b;
+            background-color: beige;
+        }
+
+        .reset-btn {
+            background-color: beige;
+            color: rgb(30, 0, 30);
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 650px;
+            border-collapse: collapse;
+            background-color: rgb(117, 220, 248);
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: center;
+            border: 1px solid #b0bec5;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #844b4b;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        td {
+            color: #ffffff;
+        }
+        
+        /* Remove default link styling for the buttons */
+        td a {
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #300303;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* --- Responsive Media Queries --- */
+
+        /* Tablet and Mobile Layout */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+                margin-bottom: 20px;
+            }
+
+            section {
+                padding: 20px 15px;
+            }
+
+            .filter-form-class {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-form-class select, 
+            .filter-form-class button {
+                width: 100%;
+            }
+        }
+
+        /* Small Mobile Adjustments */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>  
+        <h1>🏏 IPL Match Schedule</h1>
+        <p>Find your Match and book your tickets!</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Ticket Booking Information</h2>    
+            <ul>
+                <li>Select your favourite team.</li>
+                <li>Check the match date, time and venue.</li>
+                <li>Compare the available tickets and prices.</li>
+                <li>Click Book to view your selected tickets.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Find a Match</h2>
+            <form class="filter-form-class" id="filterForm">
+                <label for="teamfilter">Filter by Name</label>
+                <select id="teamfilter" name="team">
+                    <option value="">All Teams</option>
+                    <option value="CSK">Chennai Super Kings</option>
+                    <option value="MI">Mumbai Indians</option>
+                    <option value="RCB">Royal Challengers Bangalore</option>
+                    <option value="KKR">Kolkata Knight Riders</option>
+                </select>
+                <button type="submit" class="reset-btn">Apply Filter</button>   
+                <button type="button" class="reset-btn" id="showAllBtn">Show All</button>
+                <button type="reset" class="reset-btn" id="resetBtn">Reset</button>
+                
+                <!-- Error Message Container -->
+                <div id="error-message" style="color: #d32f2f; display: none; width: 100%; font-weight: bold; font-size: 14px; margin-top: 5px;">
+                    ⚠️ Please select a team to apply the filter.
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Match</th>
+                            <th>Date &amp; Time</th>
+                            <th>Venue</th>
+                            <th>Starting Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CSK vs RCB</td>
+                            <td>March 28, 7:30 PM</td>
+                            <td>M. A. Chidambaram Stadium, Chennai</td>
+                            <td>₹1,500</td>
+                            <!-- Updated Link -->
+                            <td><a href="Booking.html?teams=CSK%20vs%20RCB&amp;date=March%2028%2C%207%3A30%20PM&amp;venue=M.%20A.%20Chidambaram%20Stadium%2C%20Chennai&amp;price=1500"><button type="button" class="reset-btn">Book</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>MI vs KKR</td>
+                            <td>March 29, 7:30 PM</td>
+                            <td>Wankhede Stadium, Mumbai</td>
+                            <td>₹1,200</td>
+                            <!-- Updated Link -->
+                            <td><a href="Booking.html?teams=MI%20vs%20KKR&amp;date=March%2029%2C%207%3A30%20PM&amp;venue=Wankhede%20Stadium%2C%20Mumbai&amp;price=1200"><button type="button" class="reset-btn">Book</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>RCB vs MI</td>
+                            <td>April 02, 7:30 PM</td>
+                            <td>M. Chinnaswamy Stadium, Bengaluru</td>
+                            <td>₹1,800</td>
+                            <!-- Updated Link -->
+                            <td><a href="Booking.html?teams=RCB%20vs%20MI&amp;date=April%2002%2C%207%3A30%20PM&amp;venue=M.%20Chinnaswamy%20Stadium%2C%20Bengaluru&amp;price=1800"><button type="button" class="reset-btn">Book</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>KKR vs CSK</td>
+                            <td>April 05, 3:30 PM</td>
+                            <td>Eden Gardens, Kolkata</td>
+                            <td>₹1,000</td>
+                            <!-- Updated Link -->
+                            <td><a href="Booking.html?teams=KKR%20vs%20CSK&amp;date=April%2005%2C%203%3A30%20PM&amp;venue=Eden%20Gardens%2C%20Kolkata&amp;price=1000"><button type="button" class="reset-btn">Book</button></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 IPL Match Booking. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Client-Side Validation -->
+    <script>
+        const filterForm = document.getElementById('filterForm');
+        const teamFilter = document.getElementById('teamfilter');
+        const errorMessage = document.getElementById('error-message');
+        const resetBtn = document.getElementById('resetBtn');
+
+        filterForm.addEventListener('submit', function(event) {
+            // Prevent the form from submitting/reloading the page
+            event.preventDefault();
+
+            // Validation logic
+            if (teamFilter.value === "") {
+                // Show error message if "All Teams" (empty value) is selected
+                errorMessage.style.display = 'block';
+            } else {
+                // Hide error message if validation passes
+                errorMessage.style.display = 'none';
+                alert('Filter successfully applied for: ' + teamFilter.value);
+            }
+        });
+
+        // Hide the error message when the user clicks Reset
+        resetBtn.addEventListener('click', function() {
+            errorMessage.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+/* CSS Variables for Site Theme */
+:root {
+    --primary: #28cb59;
+    --accent: #008b8b;
+    --background: #f4f9f9;
+    --text: #333333;
+    --nav-bg: #ffffff;
+}
+
+/* CSS Basics: Typography and Box Model */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 70px; /* Prevents content from hiding under fixed navbar */
+}
+
+/* Fixed Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--accent);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar Hover Effects */
+.nav-links a:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+/* Hero Section with Gradient */
+.hero {
+    background: linear-gradient(135deg, #7ce1c8 0%, var(--primary) 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background-color: white;
+    color: var(--primary);
+}
+
+.primary-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.secondary-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.secondary-btn:hover {
+    background-color: white;
+    color: var(--primary);
+}
+
+/* Content Container & Lists */
+.container {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+/* Table Styling */
+.filter-bar {
+    margin-bottom: 15px;
+}
+
+.small-btn {
+    padding: 5px 10px;
+    background-color: var(--primary);
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 3px;
+}
+
+.match-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.match-table th, .match-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.match-table th {
+    background-color: #eee;
+    color: var(--text);
+}
+
+/* Footer & Disclaimers */
+.disclaimer {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #777;
+    background-color: #e9ecef;
+}

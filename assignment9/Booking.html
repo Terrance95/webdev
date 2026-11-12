@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Booking</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding-bottom: 40px;
+        }
+
+        /* 1. FLEXBOX LAYOUT (Navbar) */
+        header {
+            background: #0b1a30;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #e21d24;
+        }
+
+        /* 2. CSS GRID LAYOUT (Main Content) */
+        .main-content {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0b1a30;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Places Form and Summary side-by-side */
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Card & Form Styling */
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid #0b1a30;
+        }
+
+        h2 {
+            color: #0b1a30;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f4f6f9;
+            padding-bottom: 8px;
+        }
+
+        .match-details p {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        select, input[type="text"], input[type="email"], input[type="number"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .error-text {
+            color: #e21d24;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .price-display {
+            background-color: #eef7ee;
+            border: 1px solid #cce8cc;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        button {
+            width: 100%;
+            background-color: #e21d24;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #c6161c;
+        }
+
+        #viewHistoryButton {
+            background-color: #0b1a30;
+        }
+
+        #viewHistoryButton:hover {
+            background-color: #050d1a;
+        }
+
+        /* History Table */
+        .hidden {
+            display: none;
+        }
+
+        .history-section {
+            grid-column: 1 / -1; /* Makes history span both columns at the bottom */
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f6f9;
+            font-weight: bold;
+            color: #0b1a30;
+        }
+
+        /* 3. RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .booking-grid {
+                grid-template-columns: 1fr; /* Stacks vertically on mobile */
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">🏟️ Stadium Pass</div>
+            <ul class="nav-links">
+                <li><a href="matches-1-BookButton.html">Matches</a></li>
+                <li><a href="#">Book Tickets</a></li>
+                <li><a href="#">My Bookings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Complete Your Booking</h1>
+        
+        <div class="booking-grid">
+            
+            <!-- Grid Item 1: Booking Form -->
+            <section class="card">
+                <h2>Passenger & Ticket Details</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="customerName">Full Name</label>
+                        <input type="text" id="customerName" placeholder="Enter your name">
+                        <span class="error-text" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Email Address</label>
+                        <input type="email" id="customerEmail" placeholder="Enter your email">
+                        <span class="error-text" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="userMobile">Mobile Number</label>
+                        <input type="tel" id="userMobile" placeholder="Enter 10-digit mobile number" maxlength="10">
+                        <span class="error-text" id="mobileError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="zoneSelect">Select Stand</label>
+                        <select id="zoneSelect">
+                            <option value="">Choose a ticket type</option>
+                            <option value="General Stands">General Stands - ₹1,200</option>
+                            <option value="East Gallery">East Gallery - ₹2,500</option>
+                            <option value="Grand Stand">Grand Stand - ₹5,000</option>
+                            <option value="VIP Lounge">VIP Lounge - ₹12,000</option>
+                        </select>
+                        <span class="error-text" id="zoneError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketQuantity">Number of Tickets</label>
+                        <input type="number" id="ticketQuantity" min="1" max="10" value="1">
+                        <span class="error-text" id="quantityError"></span>
+                    </div>
+                    
+                    <button type="submit" id="bookButton">Confirm Booking</button>
+                    <button type="button" id="viewHistoryButton">View Booking History</button>
+                </form>
+            </section>
+
+            <!-- Grid Item 2: Summary Side-by-Side -->
+            <section class="card">
+                <h2>Match Information & Summary</h2>
+                <div class="match-details">
+                    <p><strong>Match:</strong> <span id="displayTeams">Select a match</span></p>
+                    <p><strong>Date & Time:</strong> <span id="displayDate">--</span></p>
+                    <p><strong>Venue:</strong> <span id="displayVenue">--</span></p>
+                    <p><strong>Starting Price:</strong> ₹<span id="displayStartingPrice">--</span></p>
+                </div>
+                
+                <div class="price-display">
+                    <h3>Total Amount: ₹<span id="totalAmount">0</span></h3>
+                </div>
+            </section>
+
+            <!-- History Section (Spans both columns) -->
+            <section class="card history-section hidden" id="historyContainer">
+                <h2>Booking History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Team</th>
+                            <th>Stand</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Tickets</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingHistoryBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center;">No bookings yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // 1. Catch URL Parameters from the matches page
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var teams = urlParams.get('teams');
+            var date = urlParams.get('date');
+            var venue = urlParams.get('venue');
+            var price = urlParams.get('price');
+
+            if (teams) document.getElementById('displayTeams').textContent = teams;
+            if (date) document.getElementById('displayDate').textContent = date;
+            if (venue) document.getElementById('displayVenue').textContent = venue;
+            if (price) document.getElementById('displayStartingPrice').textContent = Number(price).toLocaleString('en-IN');
+            
+            updateTotalPrice(); // Initialize price to 0
+        });
+
+        // 2. Form Variables
+        var bookingForm = document.getElementById("bookingForm");
+        var userNameInput = document.getElementById("customerName");
+        var userEmailInput = document.getElementById("customerEmail");
+        var userMobileInput = document.getElementById("userMobile");
+        var standTypeSelect = document.getElementById("zoneSelect");
+        var ticketCountInput = document.getElementById("ticketQuantity");
+        var totalAmountSpan = document.getElementById("totalAmount");
+        var viewHistoryButton = document.getElementById("viewHistoryButton");
+        var historyContainer = document.getElementById("historyContainer");
+        var historyBody = document.getElementById("bookingHistoryBody");
+
+        var nameError = document.getElementById("nameError");
+        var emailError = document.getElementById("emailError");
+        var mobileError = document.getElementById("mobileError");
+        var zoneError = document.getElementById("zoneError");
+        var quantityError = document.getElementById("quantityError");
+
+        var standPrices = {
+            "General Stands": 1200,
+            "East Gallery": 2500,
+            "Grand Stand": 5000,
+            "VIP Lounge": 12000
+        };
+
+        // 3. Update Price
+        function updateTotalPrice() {
+            var ticketPrice = standPrices[standTypeSelect.value] || 0;
+            var count = Number(ticketCountInput.value);
+            if (!Number.isInteger(count) || count < 1) count = 1;
+            totalAmountSpan.textContent = (ticketPrice * count).toLocaleString("en-IN");
+        }
+
+        // 4. Form Validation
+        function validateForm() {
+            var isValid = true;
+            [nameError, emailError, mobileError, zoneError, quantityError].forEach(function(error) {
+                error.textContent = "";
+            });
+
+            if (!userNameInput.value.trim()) {
+                nameError.textContent = "Name is required.";
+                isValid = false;
+            }
+
+            var emailValue = userEmailInput.value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+                emailError.textContent = emailValue ? "Please enter a valid email address." : "Email is required.";
+                isValid = false;
+            }
+
+            if (!/^[6-9][0-9]{9}$/.test(userMobileInput.value.trim())) {
+                mobileError.textContent = "Enter a valid 10-digit Indian mobile number.";
+                isValid = false;
+            }
+            
+            if (!standTypeSelect.value) {
+                zoneError.textContent = "Please select a stand.";
+                isValid = false;
+            }
+
+            var count = Number(ticketCountInput.value);
+            if (!Number.isInteger(count) || count < 1 || count > 10) {
+                quantityError.textContent = "Enter a whole number between 1 and 10.";
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        // 5. Booking & Local Storage Logic
+        function getBookings() {
+            try {
+                var bookings = JSON.parse(localStorage.getItem("iplBookings"));
+                return Array.isArray(bookings) ? bookings : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function handleBooking() {
+            if (!validateForm()) return;
+
+            var count = Number(ticketCountInput.value);
+            var booking = {
+                team: document.getElementById('displayTeams').textContent,
+                stand: standTypeSelect.options[standTypeSelect.selectedIndex].text.split(' -')[0],
+                name: userNameInput.value.trim(),
+                mobile: userMobileInput.value.trim(),
+                tickets: count,
+                totalPrice: standPrices[standTypeSelect.value] * count
+            };
+
+            var bookings = getBookings();
+            bookings.push(booking);
+            localStorage.setItem("iplBookings", JSON.stringify(bookings));
+            
+            bookingForm.reset();
+            updateTotalPrice();
+            renderHistoryTable();
+            alert("Tickets booked successfully!");
+        }
+
+        function renderHistoryTable() {
+            var bookings = getBookings();
+            historyBody.innerHTML = "";
+
+            if (!bookings.length) {
+                var emptyRow = historyBody.insertRow();
+                var emptyCell = emptyRow.insertCell();
+                emptyCell.colSpan = 6;
+                emptyCell.style.textAlign = "center";
+                emptyCell.textContent = "No bookings yet.";
+                return;
+            }
+
+            bookings.forEach(function(booking) {
+                var row = historyBody.insertRow();
+                [booking.team, booking.stand, booking.name, booking.mobile, booking.tickets,
+                    "\u20B9" + Number(booking.totalPrice).toLocaleString("en-IN")].forEach(function(value) {
+                    row.insertCell().textContent = value || "-";
+                });
+            });
+        }
+
+        function toggleHistoryView() {
+            var isHidden = historyContainer.classList.toggle("hidden");
+            viewHistoryButton.textContent = isHidden ? "View Booking History" : "Hide Booking History";
+            if (!isHidden) renderHistoryTable();
+        }
+
+        // 6. Event Listeners
+        standTypeSelect.addEventListener("change", updateTotalPrice);
+        ticketCountInput.addEventListener("input", updateTotalPrice);
+        bookingForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            handleBooking();
+        });
+        viewHistoryButton.addEventListener("click", toggleHistoryView);
+    </script>
+</body>
+</html>

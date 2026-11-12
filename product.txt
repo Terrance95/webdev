@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <title>HTML Tags Demonstration</title>
+  </head>
+
+  <body>
+    <!-- Text Formatting Tags -->
+
+    <p>
+      &lt;strong&gt;: Indicates high importance, and browsers render it in bold
+      by default.
+      <br />
+      &lt;em&gt;: Marks stress emphasis that changes the meaning of a sentence,
+      and browsers render it in italics by default.
+    </p>
+
+    <p>
+      &lt;mark&gt;: Highlights text for reference, browser rendered with a
+      yellow background by default. &lt;br&gt;: Inserts a single line break in
+      text (a hard return). &lt;hr&gt;: Represents a thematic break between
+      paragraph-level blocks and is a self-closing tag.
+    </p>
+
+    <!-- Product Safety Warning -->
+
+    <h3>Product Safety Warning</h3>
+
+    <p>
+      <strong>WARNING:</strong>
+      Keep this device away from water.
+      <em>Do not attempt to open the battery compartment yourself.</em>
+      Tata EV
+      <mark>achieved 1.49Kw/L achieved efficiency</mark>
+      in 2026 test.
+    </p>
+
+    <hr />
+
+    <!-- Search Results -->
+
+    <h3>Search Results for "HTML"</h3>
+
+    <p>
+      We found 3 matches. The
+      <mark>HTML</mark>
+      Specification defines the language used to build webpage structures.
+    </p>
+
+    <hr />
+
+    <!-- Company Address -->
+
+    <h3>Company Address</h3>
+
+    <p>
+      Tech Solutions Inc.<br />
+      123 Innovation Way<br />
+      Suite 400
+    </p>
+
+    <!-- HTML Table Explanation -->
+
+    <p>
+      HTML table tags are divided into structural containers (which group rows
+      together) and individual row/cell elements.
+    </p>
+
+    <h4>Old Table format</h4>
+
+    <p>
+      Old table format tags: &lt;table&gt;: main tag &lt;th&gt;: table header
+      &lt;tr&gt;: table row &lt;td&gt;: table data (enter data for each column)
+    </p>
+
+    <!-- Old Table -->
+
+    <table border="1">
+      <tr>
+        <th>Product Name</th>
+        <th>Units Sold</th>
+        <th>Total Revenue</th>
+      </tr>
+
+      <tr>
+        <td>Smart Watch</td>
+        <td>1,250</td>
+        <td>$250,000</td>
+      </tr>
+
+      <tr>
+        <td>Wireless Earbuds</td>
+        <td>3,400</td>
+        <td>$510,000</td>
+      </tr>
+    </table>
+
+    <!-- Modern Table -->
+
+    <h4>Modern Table tags using</h4>
+
+    <p>
+      HTML5 table format tags: &lt;table&gt;: Wraps the entire table structure
+      &lt;thead&gt;: Table Header Groups the header rows &lt;tr&gt;: Defines a
+      single horizontal row of cells. &lt;th&gt;: Defines a header cell
+      &lt;tbody&gt;: Table body Groups the main body rows &lt;td&gt;: Table row
+      data
+    </p>
+
+    <table>
+      <caption>
+        2026 Q1 Gadget Sales Report
+      </caption>
+
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Units Sold</th>
+          <th>Total Revenue</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Smart Watch</td>
+          <td>1,250</td>
+          <td>$250,000</td>
+        </tr>
+
+        <tr>
+          <td>Wireless Earbuds</td>
+          <td>3,400</td>
+          <td>$510,000</td>
+        </tr>
+
+        <tr>
+          <td>MagSafe Power Bank</td>
+          <td>850</td>
+          <td>$42,500</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Detailed Table tags given in the Table format</h4>
+
+    <!-- HTML Listing -->
+
+    <h4>HTML Listing:</h4>
+
+    <p>
+      These tags are used to build lists in HTML. They organize related items
+      into either bulleted or numbered structures, which makes content highly
+      readable and accessible.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matches-1-BookButton</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #c8dcf1;
+            /* color: #1e293b; */
+        }
+
+        header {
+            background: #102a56;
+            color: white;
+            text-align: center;
+            padding: 12px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        section {
+            background: #0dc7f5;
+            padding: 30px;
+            margin-bottom: 42px;
+            border-radius: 20px;
+        }
+
+        .filter-form-class {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        select,
+        button {
+            padding: 10px 14px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        select {
+            border: 1px solid #94a3b8;
+            background: rgb(251, 249, 251);
+        }
+
+        .reset-btn-class {
+            background: #475569;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .book-btn {
+            background: #e21d24;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .book-btn:hover {
+            background: #c6161c;
+        }
+
+        table {
+            width: 100%;
+            min-width: 850px;
+            border-collapse: collapse;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏏 IPL Match Schedule</h1>
+        <p>Find your match and book your tickets</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Ticket Booking Information</h2>
+            <ul>
+                <li>Select your favourite team.</li>
+                <li>Check the match date, time and venue.</li>
+                <li>Compare the available ticket prices.</li>
+                <li>Click Book to view your selected match.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Find a Match</h2>
+            <form class="filter-form-class">
+                <label for="teamFilter">Filter by Name</label>
+                <select id="teamFilter" name="team">
+                    <option value="">All Teams</option>
+                    <option value="CSK">Chennai Super Kings</option>
+                    <option value="MI">Mumbai Indians</option>
+                    <option value="RCB">Royal Challengers Bangalore</option>
+                    <option value="KKR">Kolkata Knight Riders</option>
+                </select>
+                <button type="submit" class="reset-btn-class">Apply Filter</button>
+                <button type="reset" class="reset-btn-class">Show all</button>
+            </form>
+
+            <div class="table-wrapper">
+                <table>
+                    <caption>Upcoming Sample Matches</caption>
+                    <thead>
+                        <tr>
+                            <th>Match No</th>
+                            <th>Teams</th>
+                            <th>Date & Time</th>
+                            <th>Venue</th>
+                            <th>Ticket Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>CSK-MI</td>
+                            <td>29-Jan-27 6:30PM</td>
+                            <td>Chennai</td>
+                            <td>1200-12000/-</td>
+                            <td>
+                                <button type="button" 
+                                    class="book-btn"
+                                    data-teams="CSK-MI"
+                                    data-date="29-Jan-27 6:30PM"
+                                    data-venue="Chennai">Book</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>RR-RCB</td>
+                            <td>29-Jan-27 6:30PM</td>
+                            <td>Mohali</td>
+                            <td>1200-12000/-</td>
+                            <td>
+                                <button type="button" 
+                                    class="book-btn"
+                                    data-teams="RR-RCB"
+                                    data-date="29-Jan-27 6:30PM"
+                                    data-venue="Mohali">Book</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <script>
+            var bookButtons = document.querySelectorAll('.book-btn');
+            for (var i = 0; i < bookButtons.length; i++) {
+                bookButtons[i].addEventListener('click', function(event) {
+                    var matchTeams = event.target.getAttribute('data-teams');
+                    var matchDate = event.target.getAttribute('data-date');
+                    var matchVenue = event.target.getAttribute('data-venue');
+
+                    var targetUrl = 'Booking.html' +
+                        '?teams=' + encodeURIComponent(matchTeams) +
+                        '&date=' + encodeURIComponent(matchDate) +
+                        '&venue=' + encodeURIComponent(matchVenue);
+
+                    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+                });
+            }
+        </script>
+    </main>
+</body>
+</html>

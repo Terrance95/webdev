@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matches</title>
+    <style>
+        header {
+            background-color: #844b4b; 
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        section {
+            background-color: rgb(68, 126, 176);
+            padding: 30px;
+            margin-bottom: 42px;
+            border-radius: 30px;
+        }
+
+        .filter-form-class {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-form-class select,
+        .filter-form-class button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>  
+            <h1>🏏 IPL Match Schedule</h1>
+            <p>Find your Match and book your tickets!</p>
+        </header>
+
+        <section>
+            <h2>Ticket Booking Information</h2>    
+            <ul>
+                <li>Select your favourite team.</li>
+                <li>Check the match date, time and venue.</li>
+                <li>Compare the available tickets and prices.</li>
+                <li>Click Book to view your selected tickets.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Find a Match</h2>
+            <form class="filter-form-class">
+                <label for="teamfilter">Filter by Name</label>
+                <select id="teamfilter" name="team">
+                    <option value="">All Teams</option>
+                    <option value="CSK">Chennai Super Kings</option>
+                    <option value="MI">Mumbai Indians</option>
+                    <option value="RCB">Royal Challengers Bangalore</option>
+                    <option value="KKR">Kolkata Knight Riders</option>
+                </select>
+                <button class="reset-btn">Apply Filter</button>   
+                <button class="reset-btn">Show All</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

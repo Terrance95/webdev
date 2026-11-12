@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Ticket Booking</title>
+    <!-- Links external styles.css -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">🏟️ Stadium Pass</div>
+        <ul class="nav-links">
+            <li><a href="#">Matches</a></li>
+            <li><a href="#">Book Tickets</a></li>
+            <li><a href="#">My Bookings</a></li>
+            <li><a href="#">Guidelines</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Experience the Game Live</h1>
+        <p>Secure your seat for the greatest matches of the season. Don't miss a single moment of action.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn primary-btn">Book Now</a>
+            <a href="#" class="btn secondary-btn">View Guidelines</a>
+        </div>
+    </header>
+
+    <!-- Page Content Matching the Photos -->
+    <main class="container">
+        
+        <section class="booking-info">
+            <h2>Ticket Booking Information</h2>
+            <ul>
+                <li>Select your favorite team</li>
+                <li>Check the match date, time and venue</li>
+                <li>Compare the available ticket prices</li>
+                <li>Click Book to view your selected match</li>
+            </ul>
+        </section>
+
+        <section class="find-match">
+            <h2>Find a Match</h2>
+            <div class="filter-bar">
+                <label for="team-filter">Filter by team:</label>
+                <select id="team-filter">
+                    <option>All Teams</option>
+                </select>
+                <button class="btn small-btn">Apply Filter</button>
+                <button class="btn small-btn">Show All</button>
+            </div>
+            
+            <table class="match-table">
+                <thead>
+                    <tr>
+                        <th>Match No.</th>
+                        <th>Teams</th>
+                        <th>Date / Time</th>
+                        <th>Venue</th>
+                        <th>Prices (₹)</th>
+                        <th>Seats Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>27a</td>
+                        <td>CSK-MI</td>
+                        <td>27-Oct-26 / 6:30PM</td>
+                        <td>Chinnaswamy</td>
+                        <td>1000-5000 (₹)</td>
+                        <td>7200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="ticket-categories">
+            <h2>Ticket Categories</h2>
+            <ol>
+                <li>General Stand — budget-friendly seating</li>
+                <li>Premium Stand — enhanced viewing experience</li>
+                <li>VIP Stand — premium match day experience</li>
+            </ol>
+            <p class="disclaimer">Displayed prices are illustrative sample prices. Actual ticket availability and prices may differ.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 IPL Match Booking Demo | Educational Project</p>
+    </footer>
+
+</body>
+</html>
