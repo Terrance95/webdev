@@ -1,19 +1,232 @@
-* { box-sizing: border-box; }
-body { margin: 0; font-family: Arial, sans-serif; background: #f4f6f9; color: #333; }
-.navbar { background: #0b1a30; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-.navbar h2 { color: white; margin: 0; }
-.navbar-links { display: flex; gap: 12px; }
-.navbar-links a { color: white; text-decoration: none; padding: 7px 10px; border-radius: 4px; }
-.navbar-links a:hover { background: #e21d24; }
-.simple-page { max-width: 1100px; margin: 35px auto; padding: 0 20px; }
-h1 { text-align: center; color: #0b1a30; margin-bottom: 28px; }
-h2 { color: #0b1a30; margin-top: 0; }
-.button-link, .small-button, button { display: inline-block; background: #e21d24; color: white; border: 0; border-radius: 4px; padding: 10px 16px; font-weight: bold; text-decoration: none; cursor: pointer; }
-.button-link { margin-top: 12px; } button { width: 100%; margin-top: 12px; } .button-link:hover, .small-button:hover, button:hover { background: #c6161c; }
-table { width: 100%; border-collapse: collapse; background: white; } th, td { border: 1px solid #ddd; padding: 12px; text-align: center; } th { background: #e8edf3; color: #0b1a30; }
-.booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: start; }
-.card { background: white; padding: 25px; border: 1px solid #ddd; border-top: 5px solid #0b1a30; border-radius: 5px; }
-.card p { margin: 12px 0; }
-label { display: block; font-weight: bold; margin: 14px 0 6px; } input, select { width: 100%; padding: 10px; border: 1px solid #bbb; border-radius: 4px; font: inherit; }
-.message { color: #168039; font-weight: bold; text-align: center; }
-@media (max-width: 700px) { .navbar { flex-direction: column; gap: 14px; } .booking-grid { grid-template-columns: 1fr; } table { font-size: .8rem; } th, td { padding: 8px; } }
+/* ============================================================
+   IPL MATCHDAY — PREMIUM CRICKET STADIUM THEME
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  --primary-gold: #f59e0b;
+  --gold-glow: rgba(245, 158, 11, 0.4);
+  --ipl-orange: #ff4d28;
+  --ipl-orange-glow: rgba(255, 77, 40, 0.35);
+  --ipl-blue: #0066ff;
+  --bg-deep: #060913;
+  --card-bg: rgba(16, 23, 42, 0.82);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-hover-border: rgba(245, 158, 11, 0.4);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --page-max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  font-family: var(--font-main);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background image of cricket stadium with cinematic lighting overlay */
+body {
+  background-image:
+    radial-gradient(circle at 50% 10%, rgba(20, 30, 60, 0.72) 0%, rgba(6, 9, 19, 0.92) 55%, #05070e 100%),
+    url('/stadium-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ============================================================
+   TOP BANNER & NAVBAR
+   ============================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(6, 9, 19, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #b91c1c 0%, #ea580c 50%, #b45309 100%);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  text-align: center;
+}
+
+.live-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  animation: pulse-ring 1.8s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+.navbar {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff4d28 0%, #f59e0b 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px var(--ipl-orange-glow);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ffffff 40%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary-gold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.active {
+  color: #fff;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.nav-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-gold);
+  color: #111;
+  font-size: 0.75rem;
+  font-weight: 800;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  padding: 0 5px;
+}
+
+/* New style for contact display in navbar */
+.nav-contact {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: auto;       /* push to far right */
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Ensure the navbar links container grows to fill space */
+.navbar-links {
+  align-items: center;
+  flex: 1;
+}
+
+.nav-contact {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: auto; /* push to far right within navbar-links */
+}
+
+/* Ensure the contact badge aligns nicely with nav links */
+.navbar-links {
+  align-items: center;
+}
+
+.nav-contact {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: 12px;
+}
